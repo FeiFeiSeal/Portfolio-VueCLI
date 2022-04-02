@@ -11,7 +11,7 @@
 //   publicPath: "./"
 // }
 module.exports = {
-  publicPath: "/Portfolio-VueCLI/"
+  publicPath: "/Portfolio-VueCLI"
 }
 //https://<USERNAME>.github.io/<REPO>/
 //https://feifeiseal.github.io/Portfolio-VueCLI/
