@@ -3,7 +3,7 @@
 //   transpileDependencies: true
 // })
 module.exports = {
-  publicPath: '/Portfolio-VueCLI/dist/'
+  publicPath: '/Portfolio-VueCLI/'
 }
 //https://<USERNAME>.github.io/<REPO>/
 //https://feifeiseal.github.io/Portfolio-VueCLI/
