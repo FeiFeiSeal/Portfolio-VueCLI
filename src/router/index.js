@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory() } from 'vue-router';
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
 import D1 from '../views/D1_DrumKit.vue';
 
 
