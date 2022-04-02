@@ -47,7 +47,7 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes: [{ path: '/:pathMatch(.*)', component: NotFoundComponent }],
+  routes
 })
 
 export default router
