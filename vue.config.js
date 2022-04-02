@@ -7,8 +7,11 @@
 //     ? '/Portfolio-VueCLI/'
 //     : '/'
 // }
+// module.exports = {
+//   publicPath: "./"
+// }
 module.exports = {
-  publicPath: "./"
+  publicPath: "/Portfolio-VueCLI/"
 }
 //https://<USERNAME>.github.io/<REPO>/
 //https://feifeiseal.github.io/Portfolio-VueCLI/
