@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkjs30_vue_cli"]=self["webpackChunkjs30_vue_cli"]||[]).push([[686],{686:function(e,r,t){t.r(r),t.d(r,{default:function(){return f}});var i=t(252);const n={src:"https://feifeiseal.github.io/practice/20211128-KingNew-RWD/home.html",frameborder:"0"};function c(e,r,t,c,u,s){return(0,i.wg)(),(0,i.iD)("iframe",n)}var u={},s=t(744);const a=(0,s.Z)(u,[["render",c]]);var f=a}}]);
+//# sourceMappingURL=686.bdf996fa.js.map
