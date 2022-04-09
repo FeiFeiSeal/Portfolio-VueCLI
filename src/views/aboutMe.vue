@@ -256,12 +256,13 @@ export default {
     margin-bottom: var(--gap);
 }
 .section-person .box-photo{
-    width: 25%;
-    max-width: 250px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto calc(var(--gap) / 2);
-    aspect-ratio: 1 / 1;
+    /*IOS chrome 100.0.4896.77 aspect-ratio 無效*/
+    /* aspect-ratio: 1 / 1;
     -webkit-aspect-ratio: 1 / 1;
-    -moz-aspect-ratio: 1 / 1;
+    -moz-aspect-ratio: 1 / 1; */
     border-radius: 50%;
     box-shadow: 0 0 10px #0003;
     overflow: hidden;
@@ -409,9 +410,6 @@ export default {
     }
     .section-person .region-photo{ width: 35%;}
     .section-person .region-info { width: 65%;}
-    .section-person .box-photo{
-        width: 50%;
-    }
    .section-person .region-photo h1{
        font-size: 30px;
    }
