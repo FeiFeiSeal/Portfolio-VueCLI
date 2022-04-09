@@ -206,17 +206,36 @@ export default {
     background-color: #fff8;
     position: relative;
 }
-.container::after{
-    content: "◆ ◆ ◆";
-    color: #aaa ;
-    width: 10%;
-    font-size: 12px;
+[class*="section-"]:not(:last-child) .container::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
     text-align: center;
+    background-color: #aaa;
+    box-shadow: 
+        -20px 0 0 #ccc,
+        20px 0 0 #ccc;
     position: absolute;
     bottom: calc(var(--gap)/-2);
     left: 0;
     right: 0;
     margin: auto;
+    animation: divAni 2s infinite;
+}
+@keyframes divAni{
+    0%{ background-color: #ccc;
+        box-shadow: 
+        -20px 0 0 #aaa,
+        20px 0 0 #ccc;}
+    50%{ background-color: #aaa;
+        box-shadow: 
+        -20px 0 0 #ccc,
+        20px 0 0 #ccc;}
+    100%{ background-color: #ccc;
+        box-shadow: 
+        -20px 0 0 #ccc,
+        20px 0 0 #aaa;}
 }
 .region-title{
     margin-bottom: calc(var(--gap)/2);
@@ -241,6 +260,8 @@ export default {
     max-width: 250px;
     margin: 0 auto calc(var(--gap) / 2);
     aspect-ratio: 1 / 1;
+    -webkit-aspect-ratio: 1 / 1;
+    -moz-aspect-ratio: 1 / 1;
     border-radius: 50%;
     box-shadow: 0 0 10px #0003;
     overflow: hidden;

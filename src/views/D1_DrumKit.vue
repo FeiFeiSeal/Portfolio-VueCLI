@@ -120,6 +120,8 @@ export default {
   .block-keyboard li{
     width: 10%;
     aspect-ratio: 1 / 3;
+    -webkit-aspect-ratio: 1 / 3;
+    -moz-aspect-ratio: 1 / 3;
     border-radius: 0 0 6px 6px;
     background-color: #fff;
     background-image: linear-gradient(to bottom, #fff,#0001);
@@ -150,6 +152,8 @@ export default {
     content: "";
     width: 50%;
     aspect-ratio: 1 / 3;
+    -webkit-aspect-ratio: 1 / 3;
+    -moz-aspect-ratio: 1 / 3;
     border-radius: 0 0 6px 6px;
     box-shadow: 
       inset 0px -15px 10px #000,
@@ -185,12 +189,12 @@ export default {
       transform: scale(1.2);
   }
   @media screen and (max-width: 375px){
-       /* .block-keyboard ul{
+       .block-keyboard ul{
          transform: rotate(-90deg);
          position: absolute;
          top: 50%;
          right: 0;
-       } */
+       }
        .block-keyboard li{
           min-width: 50px; 
           max-width: 80px;
