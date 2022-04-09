@@ -20,14 +20,14 @@ export default ({
 
 
 <template>
-  <nav :class="['area-nav', {open: openState}]">
+  <aside :class="['area-nav', {open: openState}]">
     <div :class="['navCtrl', {open: openState}]" >
       <NavBtn @isOpen="isOpen"/> 
     </div>
     <div class="list-nav">
       <Nav/> 
     </div>
-  </nav>
+  </aside>
   <div class="area-demo">
     <router-view/>
   </div>
