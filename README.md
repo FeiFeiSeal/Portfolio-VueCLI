@@ -1,4 +1,4 @@
-# js30-vue-cli
+# Portfolio-VueCLI
 
 ## Project setup
 ```

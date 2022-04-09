@@ -1,12 +1,17 @@
 import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router';
-import D1 from '../views/D1_DrumKit.vue';
+import About from '../views/aboutMe.vue';
 
 
 const routes = [
   {
     path: '/',
-    name: 'D1',
-    component: D1
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/DrumKit',
+    name: 'DrumKit',
+    component: () => import('../views/D1_DrumKit.vue')
   },
   {
     path: '/Clock',
@@ -42,6 +47,11 @@ const routes = [
     path: '/layout-PLATE',
     name: 'PLATE',
     component: () => import('../views/layout/PLATE.vue')
+  },
+  {
+    path: '/Other',
+    name: 'Other',
+    component: () => import('../views/other.vue')
   },
 ]
 

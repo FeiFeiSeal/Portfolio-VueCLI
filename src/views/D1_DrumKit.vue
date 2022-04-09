@@ -119,8 +119,6 @@ export default {
   }
   .block-keyboard li{
     width: 10%;
-    min-width: 50px;
-    max-width: 80px;
     aspect-ratio: 1 / 3;
     border-radius: 0 0 6px 6px;
     background-color: #fff;
@@ -187,11 +185,15 @@ export default {
       transform: scale(1.2);
   }
   @media screen and (max-width: 375px){
-       .block-keyboard{
+       /* .block-keyboard ul{
          transform: rotate(-90deg);
          position: absolute;
          top: 50%;
          right: 0;
-       }
+       } */
+       .block-keyboard li{
+          min-width: 50px; 
+          max-width: 80px;
+      }
   }
 </style>

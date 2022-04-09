@@ -117,7 +117,6 @@ export default{
         border-radius: 40% 2px 2px 40% ;
         background-color: #131232;
         box-shadow: 30px 0px 0 #131232;
-        /* transform: rotate(45deg); */
     }
     .time-pointer .min{
         width: 47%;
@@ -125,19 +124,17 @@ export default{
         border-radius: 50% 2px 2px 50% ;
         background-color: #f20e74;
         box-shadow: 30px 0px 0 #f20e74;
-        /* transform: rotate(180deg); */
     }
     .time-pointer .min::before{
         content: "";
-        width: 5%;
-        padding-bottom: 5%;
         border-radius: 50%;
-        box-shadow: -20px 0 15px 5px #f20e7455;
+        /* box-shadow: 0px 0 15px 5px #f20e7455; */
         position: absolute;
         top: 0;
         bottom: 0;
         right: 80%;
         margin: auto;
+        animation: minAni 1s ease-in infinite alternate;
     }
     .time-pointer .sec{
         width: 47%;
@@ -163,5 +160,9 @@ export default{
     .block-clock .show{
         font-size: 50px;
         font-family: '微軟正黑體';
+    }
+    @keyframes minAni{
+        from{ box-shadow: -20px 0 15px 10px #f20e7455;}
+        to{box-shadow: -20px 0 25px 5px #f20e7433;}
     }
 </style>

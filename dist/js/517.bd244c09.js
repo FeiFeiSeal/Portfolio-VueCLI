@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkjs30_vue_cli"]=self["webpackChunkjs30_vue_cli"]||[]).push([[517],{517:function(e,r,t){t.r(r),t.d(r,{default:function(){return f}});var n=t(252);const u={src:"https://feifeiseal.github.io/practice/20220213-TainanCultureAPI/test.html",frameborder:"0"};function i(e,r,t,i,c,s){return(0,n.wg)(),(0,n.iD)("iframe",u)}var c={},s=t(744);const a=(0,s.Z)(c,[["render",i]]);var f=a}}]);
-//# sourceMappingURL=517.bd244c09.js.map

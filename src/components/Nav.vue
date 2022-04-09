@@ -3,14 +3,14 @@ import { onMounted } from '@vue/runtime-core'
 export default {
     setup(){
         onMounted(()=>{
-            const list = document.querySelectorAll('.list-second li');
+            const secList = document.querySelectorAll('.list-second li');
             function clearActive(){
-                for(let i = 0 ; i < list.length; i++ ){
-                    list[i].classList.remove('active');
+                for(let i = 0 ; i < secList.length; i++ ){
+                    secList[i].classList.remove('active');
                 }
             };
 
-            list.forEach((el)=>{
+            secList.forEach((el)=>{
                 el.addEventListener('click', function(){
                     clearActive();
                     this.classList.add('active');
@@ -22,8 +22,9 @@ export default {
 </script>
 
 <template>
- <nav class="main-nav">
+ <div class="main-nav">
      <ul class="list-first">
+         <li><router-link to="/">關於我</router-link></li>
          <li>切版作品
             <ul class="list-second">
                 <li><router-link to="/layout-kingNews">入口網頁-KingNews-RWD</router-link></li>
@@ -33,21 +34,22 @@ export default {
          </li>
          <li>JavaScript 作品
              <ul class="list-second">
-                <li><router-link to="/TodoList">TodoList (含RWD)</router-link></li>
-                <li><router-link to="/TainanCultureAPI">台南市政府文化局古蹟點歷年參觀人次(axios, RWD)</router-link></li>
-                <li><router-link to="/">JS30-1-Drum kit (含RWD)</router-link></li>
-                <li><router-link to="/Clock">JS30-2-Clock</router-link></li>
-                <li><router-link to="/Variable">JS30-3-Update CSS variable with JS</router-link></li>
-                <li><router-link to="/">JS30-4-</router-link></li>
-                <li><router-link to="/">JS30-5-</router-link></li>      
+                <li><router-link to="/TodoList">JS- TodoList (含RWD)</router-link></li>
+                <li><router-link to="/TainanCultureAPI">axios- 台南市政府文化局古蹟點歷年參觀人次(axios, RWD)</router-link></li>
+                <li><router-link to="/DrumKit">Vue- Drum kit (含RWD)</router-link></li>
+                <li><router-link to="/Clock">Vue- Clock</router-link></li>
+                <li><router-link to="/Variable">Vue- Update CSS variable with JS</router-link></li>
+                <!-- <li><router-link to="/">JS30-4-</router-link></li>
+                <li><router-link to="/">JS30-5-</router-link></li>       -->
             </ul>
          </li>
          <li>
              <a href="https://ithelp.ithome.com.tw/users/20140586/ironman/4225" target="_blank"> 2021 iThome 鐵人賽 (連結)</a>
         </li>
+        <li><router-link to="/Other">其他作品</router-link></li>
      </ul>
      
- </nav>
+ </div>
 
 </template>
 
@@ -55,16 +57,25 @@ export default {
     .main-nav{
         width: 100%;
         height: 100vh;
-        min-width: 300px;
         padding: 30px 45px;
         font-family: '微軟正黑體';
-        background-color: #fff;
-        box-shadow: 2px 0  10px  #0003;
+        /*hover scrollBar*/
         overflow-y: scroll;
+        mask-image: linear-gradient(to top, transparent, black),
+        linear-gradient(to left, transparent 20px, black 20px);
+        mask-size: 100% 20000px;
+        mask-position: left bottom;
+        -webkit-mask-image: linear-gradient(to top, transparent, black),
+                            linear-gradient(to left, transparent 20px, black 20px);
+        -webkit-mask-size: 100% 20000px;
+        -webkit-mask-position: left bottom;
+        transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+    }
+    .main-nav:hover{ 
+        -webkit-mask-position: left top;
     }
     .main-nav li ul{ padding-top: 10px;}
 
-    
     .list-second{ padding-left: 30px;}
     
     .list-first > li{  
@@ -83,5 +94,7 @@ export default {
         text-decoration: none;
         letter-spacing: 1px;
     }
-
+    a{
+        text-decoration: none;
+    }
 </style>

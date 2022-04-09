@@ -28,15 +28,18 @@ export default {
 <style>
 /*按鈕動畫*/
     .btn-nav{
-        display: none;
         width: 50px;
         height: 50px;
         border-radius:5px;
         background-color: #ccc;
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        z-index: 12;
+        position: relative;
+        transform: rotate(0deg);
+        transition:  .6s ease-in;
+    }
+    .btn-nav.open{
+        transform: rotate(375deg);
+        background-color: #f9a41c;
+        animation: btnAni 1s .8s ease-in infinite alternate ;
     }
     .btn-nav span{
         width: 80%;
@@ -76,10 +79,8 @@ export default {
         transition:top .5s .05s,
                     transform .4s .55s;
     }
-    @media screen and (max-width: 768px){
-        /*768以下按鈕出現*/
-        .btn-nav{
-            display: inline-block;
-        }
-     }
+    @keyframes btnAni {
+        from{ transform: rotate(375deg);}
+        to{   transform: rotate(345deg);}
+    }
 </style>
