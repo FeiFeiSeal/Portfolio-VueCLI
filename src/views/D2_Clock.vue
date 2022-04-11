@@ -102,6 +102,18 @@ export default{
         right: -50px;
         left: -50px;
     }
+    .time-pointer::after{
+        content: "";
+        width: 4%;
+        padding-bottom: 4%;
+        border-radius: 50%;
+        background-color: #ccc;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+    }
     .time-pointer .pointer{
         border-radius: 2px;
         position: absolute;
@@ -128,7 +140,6 @@ export default{
     .time-pointer .min::before{
         content: "";
         border-radius: 50%;
-        /* box-shadow: 0px 0 15px 5px #f20e7455; */
         position: absolute;
         top: 0;
         bottom: 0;
@@ -142,20 +153,6 @@ export default{
         height: 1%;
         background-color: #ccc;
         box-shadow: 30px 0px 0 #ccc;
-        /* transform: rotate(270deg); */
-        /* transition: transform 1s linear; */
-    }
-    .time-pointer .sec::after{
-        content: "";
-        width: 8%;
-        padding-bottom: 8%;
-        border-radius: 50%;
-        background-color: inherit;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 96%;
-        margin: auto;
     }
     .block-clock .show{
         font-size: 50px;

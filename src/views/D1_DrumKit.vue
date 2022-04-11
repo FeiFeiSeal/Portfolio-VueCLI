@@ -63,29 +63,29 @@ export default {
       <li data-key="75"><p>K<span>Do</span></p></li>
     </ul>
 
-    <audio data-key="65" >
-      <source src="..\assets\sound\pianoC.mp3" type="audio/mp4">
+    <audio data-key="65">
+      <source src="..\assets\sound\pianoC.mp3" type="audio/mp3">
     </audio>
     <audio data-key="83">
-      <source src="..\assets\sound\pianoD.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoD.mp3" type="audio/mp3">
     </audio>
     <audio data-key="68">
-      <source src="..\assets\sound\pianoE.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoE.mp3" type="audio/mp3">
     </audio>
     <audio data-key="70">
-      <source src="..\assets\sound\pianoF.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoF.mp3" type="audio/mp3">
     </audio>
     <audio data-key="71">
-      <source src="..\assets\sound\pianoG.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoG.mp3" type="audio/mp3">
     </audio>
     <audio data-key="72">
-      <source src="..\assets\sound\pianoA.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoA.mp3" type="audio/mp3">
     </audio>
     <audio data-key="74">
-      <source src="..\assets\sound\pianoB.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoB.mp3" type="audio/mp3">
     </audio>
     <audio data-key="75">
-      <source src="..\assets\sound\pianoC2.mp3" type="audio/mp4">
+      <source src="..\assets\sound\pianoC2.mp3" type="audio/mp3">
     </audio>  
     <!-- GET http://localhost:8080/assets/sound/pianoA.mp3 404 (Not Found) -->
     <!-- <audio src="..\assets\sound\pianoA.mp3"></audio> -->
@@ -190,16 +190,5 @@ export default {
       color: #f92659;
       transform: scale(1.2);
   }
-  @media screen and (max-width: 375px){
-       /* .block-keyboard ul{
-         transform: rotate(-90deg);
-         position: absolute;
-         top: 50%;
-         right: 0;
-       } */
-       .block-keyboard li{
-          min-width: 50px; 
-          max-width: 80px;
-      }
-  }
+
 </style>

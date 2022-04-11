@@ -290,12 +290,13 @@ export default {
     font-size: 28px;
     text-align: center;
 }
-.region-info .box-contact .icon{  display: inline-block;}
-.region-info .box-contact .icon + .icon{    margin-left: 15px;}
-
+.region-info .box-contact .icon{  
+    display: inline-block;
+    margin-right: 15px;
+}
 .region-info .box-contact .icon a{
     color: var(--icon-color);
-    font-size: 22px;
+    font-size: 20px;
     transition: color .2s;
 }
 .region-info .box-contact .icon a:hover{   color: var(--link-color);}
@@ -320,6 +321,11 @@ export default {
 .region-experience .box-unit h3 span{
     display: block;
     font-size: 22px;
+}
+.region-experience .box-duties li{
+    padding-left: 10px;
+    margin-bottom: 5px;
+    text-indent: -15px;
 }
 .region-experience .box-duties li::before{
     content: "•";
@@ -390,11 +396,6 @@ export default {
 
 /*---------------------------------*/
 @media screen and (min-width: 768px) {
-
-
-
-
-
 }
 @media screen and (min-width: 1200px) {
     .container{
