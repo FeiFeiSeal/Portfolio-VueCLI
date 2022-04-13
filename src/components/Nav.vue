@@ -28,7 +28,7 @@ export default {
          <li>切版作品
             <ul class="list-second">
                 <li><router-link to="/layout-kingNews">入口網頁-KingNews-RWD</router-link></li>
-                <li><router-link to="/layout-MAIKON">形象網頁-MAIKONs-RWD</router-link></li>
+                <li><router-link to="/layout-MAIKON">形象網頁-MAIKONss-RWD</router-link></li>
                 <li><router-link to="/layout-PLATE">形象網頁-PLATE</router-link></li>
             </ul>
          </li>
@@ -39,6 +39,7 @@ export default {
                 <li><router-link to="/DrumKit">Vue- Drum kit (含RWD)</router-link></li>
                 <li><router-link to="/Clock">Vue- Clock</router-link></li>
                 <li><router-link to="/Variable">Vue- Update CSS variable with JS</router-link></li>
+                <li><router-link to="/TypeAhead">Vue- Type Ahead</router-link></li>
                 <!-- <li><router-link to="/">JS30-4-</router-link></li>
                 <li><router-link to="/">JS30-5-</router-link></li>       -->
             </ul>

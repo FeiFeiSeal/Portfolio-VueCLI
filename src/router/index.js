@@ -24,6 +24,11 @@ const routes = [
     component: () => import('../views/D3_variable.vue')
   },
   {
+    path: '/TypeAhead',
+    name: 'TypeAhead',
+    component: () => import('../views/D6_TypeAhead.vue')
+  },
+  {
     path: '/TodoList',
     name: 'TodoList',
     component: () => import('../views/TodoList.vue')

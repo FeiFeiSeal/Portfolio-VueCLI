@@ -52,13 +52,13 @@ export default {
         <div class="panel">
             <p></p>
             <p>illustrator - LOGO設計</p>
-            <p>整體採用柔和的線條表示伸展的概念，將火焰形象化成強壯的手臂，除了與之前的LOGO進行呼應外，閃電就像是將能量輸入進去手臂一般，代表訓練是需要適當放鬆的，如此將火焰和閃電彼此環繞帶出品牌名稱首字「B」。
+            <p>整體採用柔和的線條表示伸展的概念，將火焰形象化成強壯的手臂，除了與之前的 LOGO 進行呼應外，閃電就像是將能量輸入進去手臂一般，代表訓練是需要適當放鬆的，如此將火焰和閃電彼此環繞帶出品牌名稱首字「B」。
 </p>
         </div>
         <div class="panel">
             <p></p>
             <p>illustrator - 名片設計</p>
-            <p>為工作室設計的名片，發想於平時工程師常用的原始碼，並構思出專屬於工作室的slogan，最後燙凸增加質感，即便暗色主題也不單調。
+            <p>為工作室設計的名片，名片與 LOGO 風格皆發想於平時工程師常用的原始碼，並構思出專屬於工作室的 slogan，最後將名片燙凸增加質感，即便暗色主題也不單調。
             </p>
         </div>
     </div>
@@ -141,7 +141,7 @@ export default {
         background-image: linear-gradient(to bottom, transparent 10%, 35%, #000d 100%);
     }
     .panel.open-active p:nth-child(3){
-        font-size: 16px;
+        font-size: 18px;
         opacity: 1;
     }
     .panel.open {
