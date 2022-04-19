@@ -7,12 +7,12 @@ import router from './router'
 
 //FontAwesome 5.15.4
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEnvelope, faGraduationCap, faUndo, faDownload, faUpload  } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faGraduationCap, faUndo, faDownload, faUpload, faBroom  } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin, faGithub, faHtml5 , faCss3Alt, faJsSquare  } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
-library.add(faEnvelope, faGraduationCap, faUndo, faDownload, faUpload,
+library.add(faEnvelope, faGraduationCap, faUndo, faDownload, faUpload, faBroom,
             faLinkedin, faGithub, faHtml5, faCss3Alt, faJsSquare );
 
 

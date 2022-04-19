@@ -106,28 +106,33 @@ export default {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
             }
             //上傳圖片用canvas呈現
+            //用label去觸發input
             const upload =(e)=>{
                 const canvas = document.querySelector('#draw');
                 const ctx = canvas.getContext('2d');
-                const file = e.target.files[0]; 
-                //取得上傳物件的檔案(files是陣列)，如果是多選會有很多個，只上傳一個的話就是陣列的第一個(索引值0)
-                console.log(file);
-                //影響的載入需要網址，因此在這邊把影像轉換成網址
-                let src = URL.createObjectURL(file);//URL是系統內建的物件
-                let img = new Image();
-                img.src = src;
-                img.onload = function(){
-                    let width = 0;
-                    let height = 0;
-                    if(this.width > canvas.width){
-                        width = (canvas.width/this.width)*this.width
-                        height = (canvas.width/this.width)*this.height
-                    }else{
-                        width = this.width;
-                        height = this.height;
-                    }
-                    ctx.drawImage(this, 0, 0, width, height);
-                };
+                e.target.control.addEventListener('change',()=>{
+                    const file = e.target.control.files[0]; 
+                    
+                    //取得上傳物件的檔案(files是陣列)，如果是多選會有很多個，只上傳一個的話就是陣列的第一個(索引值0)
+                    //影響的載入需要網址，因此在這邊把影像轉換成網址
+                    let src = URL.createObjectURL(file);//URL是系統內建的物件
+                    let img = new Image();
+                    img.src = src;
+                    img.onload = function(){
+                        let width = 0;
+                        let height = 0;
+                        if(this.width > canvas.width){
+                            width = (canvas.width/this.width)*this.width
+                            height = (canvas.width/this.width)*this.height
+                        }else{
+                            width = this.width;
+                            height = this.height;
+                        }
+                        ctx.drawImage(this, 0, 0, width, height);
+                    };
+                })
+
+                
              }
             //下載檔案
             //使用 HTML 5 中的 download 屬性
@@ -177,9 +182,10 @@ export default {
     <div class="block-canvas">
         <div class="box-fnc">
             <a class="fnc-return" @click="undo"><font-awesome-icon :icon='["fas","undo"]'  @click="undo"/></a>
-            <a class="fnc-clear" @click="clear">clear</a>
+            <a class="fnc-clear" @click="clear"><font-awesome-icon :icon='["fas","broom"]'/></a>
             <a class="fnc-save" @click="save"><font-awesome-icon :icon='["fas","download"]' @click="save"/></a>
-            <input type="file" class="fnc-load" @change="upload">
+            <label for="upload" class="fnc-load" @click="upload">upload</label>
+            <input type="file" id="upload">
         </div>
         <canvas id="draw" @mousemove="draw"        @touchmove="touchDraw"
                           @mousedown="starDrawing" @touchstart="starDrawing"
@@ -202,9 +208,10 @@ export default {
     </div>
 </template>
 <style scoped>
+
 .block-canvas{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     box-sizing: border-box;
     font-family:"微軟正黑體" ,serif;
     position: relative;
@@ -306,8 +313,9 @@ canvas{
     transform: translateX(-50%);
 }
 .box-fnc [class*="fnc-"]{
-    width: 65px;
+    /* width: 50px; */
     height: 50px;
+    padding: 0 15px;
     font-size: 20px;
     font-weight: 700;
     text-align: center;
@@ -320,7 +328,10 @@ canvas{
 .box-fnc .fnc-load{
     font-size: 12px;
 }
-.box-fnc [class*="fnc-"]:not(.fnc-load):hover{
+.box-fnc input[type="file"]{
+    display: none;
+}
+.box-fnc [class*="fnc-"]:hover{
     transform: scale(1.1);
 }
 .box-fnc [class*="fnc-"]:active{
