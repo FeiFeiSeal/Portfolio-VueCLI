@@ -40,6 +40,7 @@ export default {
                 <li><router-link to="/Clock">Vue- Clock</router-link></li>
                 <li><router-link to="/Variable">Vue- Update CSS variable with JS</router-link></li>
                 <li><router-link to="/TypeAhead">Vue- Type Ahead</router-link></li>
+                <li><router-link to="/Canvas">Canvas 畫布</router-link></li>
                 <!-- <li><router-link to="/">JS30-4-</router-link></li>
                 <li><router-link to="/">JS30-5-</router-link></li>       -->
             </ul>

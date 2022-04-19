@@ -67,19 +67,26 @@ export default {
         //Vue 在scpoed的情況下，用 v-html 或是 innerHTML 插入的資料不會帶有樣式
         //所以透過這種狀況產生的原始碼可以在style裡面加入>>>表示深層作用
         const displayHTML = ref("<li>Filter for a city</li><li>or a state</li>");
+
+        //人口數增加小數點
+        function numberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); ''
+        };
+
         const displayDataMatch = function(){
           const reg = new RegExp( this.value.trim(), "gi");
           const matchArr = dataMatch(reg);
+
           displayHTML.value = matchArr.map((obj)=>{
             //把篩選的文字圈選
             const regCity = obj.city.replace(reg, `<span class="hightLight">${this.value}</span>`) ;
             const regState = obj.state.replace(reg, `<span class="hightLight">${this.value}</span>`) ;
               return `<li>
                         <span class="name">${regCity}, ${regState}</span>
-                        <span class="population">${obj.population}</span>
-                    </li>` 
+                        <span class="population">${numberWithCommas(obj.population)}</span>
+                      </li>` 
           }).join("");
-            //消除逗點
+            //消除分隔逗點
         }
         
 
@@ -123,20 +130,23 @@ export default {
         width: 100%;
     }
     .search-form {
+        width: 100%;
         max-width:400px;
-        margin:50px auto;
+        padding: 0 30px;
+        margin: auto;
+        box-sizing: border-box;
     }
     input.search {
       width: 100%;
       padding:20px;
+      margin: auto;
       border: 10px solid #F7F7F7;
       border-radius: 5px;
       box-sizing: border-box;
       outline:0;
-      font-size: 40px;
+      font-size: 6vw;
       text-align: center;
       position: relative;
-      left: -10%;
       top: 10px;
       z-index: 2;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), 
@@ -145,26 +155,28 @@ export default {
 
     .suggestions {
       width: 80%;
+      margin: auto;
       position: relative;
+      z-index: 1;
     }
     .suggestions >>> li {
       display:flex;
       justify-content:space-between;
-      padding:20px;
+      padding:20px 15px;
       border-bottom: 1px solid #D8D8D8;
       font-size: 16px;
       text-transform: capitalize;
       background:white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
-      transition:background 0.2s;
+      transition: background 0.2s;
     }
 
     .suggestions >>> li:nth-child(even) {
-      transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-      background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+      transform: perspective(200px) rotateX(3deg) translateY(2px) scale(1.001);
+      background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 200%);
     }
     .suggestions >>> li:nth-child(odd) {
-      transform: perspective(100px) rotateX(-3deg) translateY(3px);
+      transform: perspective(200px) rotateX(-3deg) translateY(3px);
       background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
     }
 
@@ -178,5 +190,12 @@ export default {
       color:black;
       background:rgba(0,0,0,0.1);
       text-decoration: none;
+    }
+
+    @media screen and (min-width:768px) {
+      input.search{
+        font-size: 40px;
+      }
+      
     }
 </style>
