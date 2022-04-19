@@ -6,7 +6,7 @@ export default {
             const isDrawing = ref(false); //控制只有在滑鼠按下時才運作
             const moveDate = reactive({ lastX: 0, lastY: 0,})
             const brushSize = ref(10);
-            const hslColor = ref(0);
+            const hslColor = ref(0);         //hsl色彩控制彩色筆刷
             const colorNow = ref("rainbow"); //預設彩色
 
             //螢幕縮放canvas要跟上
@@ -18,11 +18,11 @@ export default {
                 canvas.height = window.innerHeight;
             }
 
-            //開始畫圖
+            //開始畫圖(滑鼠)
             const draw=(e)=>{
                     const canvas = document.querySelector('#draw');
                     const ctx = canvas.getContext('2d');
-
+                    
                     if(!isDrawing.value) return;
                     //當兩條線交會時，繪製成圓角
                     ctx.lineJoin = 'round';
@@ -33,8 +33,31 @@ export default {
                     ctx.moveTo(moveDate.lastX, moveDate.lastY);
                     ctx.lineTo(e.offsetX, e.offsetY);
                     ctx.stroke();
-
+ 
                     [moveDate.lastX, moveDate.lastY] = [e.offsetX, e.offsetY];
+
+                    if(colorNow.value === "rainbow"){
+                        ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`
+                        hslColor.value++;
+                    }   
+            }
+            //開始畫圖(觸控)
+            const touchDraw=(e)=>{
+                    const canvas = document.querySelector('#draw');
+                    const ctx = canvas.getContext('2d');
+                    
+                    if(!isDrawing.value) return;
+                    //當兩條線交會時，繪製成圓角
+                    ctx.lineJoin = 'round';
+                    //繪製線條的末端為圓角
+                    ctx.lineCap = 'round';
+                    ctx.lineWidth = brushSize.value;
+                    ctx.beginPath();                   
+                    ctx.moveTo(moveDate.lastX, moveDate.lastY);
+                    ctx.lineTo(e.touches[0].clientX, e.touches[0].clientY);
+                    ctx.stroke();
+
+                    [moveDate.lastX, moveDate.lastY] = [e.touches[0].clientX, e.touches[0].clientY];
 
                     if(colorNow.value === "rainbow"){
                         ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`
@@ -47,16 +70,13 @@ export default {
               const canvas = document.querySelector('#draw');
               const ctx = canvas.getContext('2d')
               isDrawing.value = false;
-
               let state = ctx.getImageData(0, 0, canvas.width, canvas.height);
               window.history.pushState(state, null);
             }
             //開啟畫圖開關狀態
             const starDrawing = (e)=>{
               const canvas = document.querySelector('#draw');
-              const ctx = canvas.getContext('2d'); 
               isDrawing.value = true;
-
               //解決一開始從起始值 0,0 飆過來的問題=> 當滑鼠按下去的時候就要馬上更新起始值
               [moveDate.lastX, moveDate.lastY] = [e.offsetX, e.offsetY];
             }
@@ -66,7 +86,7 @@ export default {
                 const canvas = document.querySelector('#draw');
                 const ctx = canvas.getContext('2d');
                 colorNow.value = e.target.dataset.color;
-                
+
                 //顏色按鈕動態清除&添加
                 e.target.parentNode.querySelectorAll('span').forEach((color)=>{
                     color.classList.remove('active');
@@ -74,11 +94,11 @@ export default {
                 e.target.classList.add('active');
                 
                 if( colorNow.value === "rainbow"){ ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`}
-                else{ ctx.strokeStyle = colorNow.value;}
+                else{ ctx.strokeStyle = colorNow.value}
             }
             //復原
             const router = useRouter();
-            const undo = ()=>{    router.go(-1);}
+            const undo = ()=>{  router.go(-1);}
             //清除
             const clear = ()=>{
                 const canvas = document.querySelector('#draw');
@@ -110,14 +130,17 @@ export default {
                 };
              }
             //下載檔案
+            //使用 HTML 5 中的 download 屬性
+            //在a裡面有icon的情況下，點到icon會讓下載觸發失敗
+            //改創造a元素來觸發 download
             const save = (e)=>{
                 const canvas = document.querySelector('#draw');
-                console.log(e.target);
-                e.target.download = "";
-                e.target.href = canvas.toDataURL("image/jpeg/png");//canvas物件提供的網址功能,並指定引向輸出格式
-                e.target.click();//主動觸發下載事件
+                const downloadLink = document.createElement('a')
+                downloadLink.download = "";
+                downloadLink.href = canvas.toDataURL("image/jpeg/png");//canvas物件提供的網址功能,並指定引向輸出格式
+                downloadLink.click();//主動觸發下載事件
             }
-            //透過popstate存取
+            //透過popstate存取上一步
             const changeStep=(e)=>{
                 const canvas = document.querySelector('#draw');
                 const ctx = canvas.getContext('2d');
@@ -143,7 +166,9 @@ export default {
             window.addEventListener('resize',canvasSize)
             window.addEventListener('popstate', changeStep, false);
         })
-        return { draw, starDrawing, closeDrawing,brushSize, brushColor, undo, clear, upload, save }
+        return { draw, touchDraw, starDrawing, closeDrawing, 
+                brushSize, brushColor, 
+                undo, clear, upload, save }
     }//setup
 }
 </script>
@@ -151,22 +176,22 @@ export default {
 <template>
     <div class="block-canvas">
         <div class="box-fnc">
-            <a class="fnc-return" @click.prevent="undo"><font-awesome-icon :icon='["fas","undo"]' /></a>
+            <a class="fnc-return" @click="undo"><font-awesome-icon :icon='["fas","undo"]'  @click="undo"/></a>
             <a class="fnc-clear" @click="clear">clear</a>
-            <a class="fnc-save" @click="save"><font-awesome-icon :icon='["fas","download"]' /></a>
+            <a class="fnc-save" @click="save"><font-awesome-icon :icon='["fas","download"]' @click="save"/></a>
             <input type="file" class="fnc-load" @change="upload">
         </div>
-        <canvas id="draw" @mousemove="draw"
-                          @mousedown="starDrawing"
-                          @mouseup="closeDrawing"
-                          @mouseout="closeDrawing">
+        <canvas id="draw" @mousemove="draw"        @touchmove="touchDraw"
+                          @mousedown="starDrawing" @touchstart="starDrawing"
+                          @mouseup="closeDrawing"  @touchend="closeDrawing"
+                          @mouseout="closeDrawing" @touchcancel="closeDrawing">
         </canvas>
-        <div class="box-color">
-            <div class="brush-color">
+        <div class="box-color">           
+            <div class="brush-color">                
                 <span data-color="#f77" @click="brushColor"></span>
                 <span data-color="#7f7" @click="brushColor"></span>
                 <span data-color="#69f" @click="brushColor"></span>
-                <span class="active" data-color="rainbow"></span>
+                <span class="active" data-color="rainbow" @click="brushColor"></span>
             </div>
             <div class="brush-size">
                 <input type="range" min="1" v-model="brushSize">
@@ -189,23 +214,25 @@ canvas{
     /*用CSS去訂canvas大小會造成圖案縮放*/
     /* width: 100%;
     height: 100%; */
-    /* box-sizing: border-box; */
-    background-color: rgb(255, 251, 240);
-    background-image: linear-gradient( -45deg, #ffefbc, #ffffff);;
+    background-color: rgb(243, 243, 236);
     box-shadow: 0 5px 5px #0005;
 }
 .box-color{
-   display: inline-block;
-   padding: 15px;
-   border-radius: 10px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0  -5px 5px #0003;
     position: absolute;
-    bottom: 60px;
-    left: 30px;
+    bottom: 0px;
+    left: 0px;
 }
 .box-color span{
     display: inline-block;
     width: 50px;
     height: 50px;
+    margin-bottom: 10px;
     border: 3px solid #fffe;
     border-radius: 50%;
     box-shadow: 0 0 8px #0008,
@@ -213,6 +240,7 @@ canvas{
                 inset -2px -2px 5px #fff8;
     vertical-align: middle;
     cursor: pointer;
+    overflow: hidden;
 }
 .box-color span:nth-child(1){ background-color: #f77; }
 .box-color span:nth-child(2){ background-color: #7f7; }
@@ -221,7 +249,6 @@ canvas{
     background-color: red;
     background-image: linear-gradient(to bottom, red,orange, yellow, green,blue, purple);
 }
-
 .box-color span.active,
 .box-color span:hover{ 
     box-shadow: 0 0 8px 1px #f00,
@@ -249,7 +276,6 @@ canvas{
 }
 .box-color input[type="range"]{
   -webkit-appearance: none;
-  /*overflow:hidden;*/     /* 限定範圍 */
   width: 100%;
   height: 10px;
   border-radius: 2000px;
@@ -267,21 +293,21 @@ canvas{
   box-shadow: inset 0 0 2px #000;
 }
 .box-fnc{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 0px 10px;
-    border-radius: 20px;
+    justify-content: center;
+    padding: 10px;
     box-shadow: 0  5px 5px #0003;
     background-color: #fff;
     position: absolute;
-    top: 15px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
 }
 .box-fnc [class*="fnc-"]{
     width: 65px;
     height: 50px;
-    margin-bottom: 10px;
     font-size: 20px;
     font-weight: 700;
     text-align: center;
@@ -301,6 +327,7 @@ canvas{
     color: #fa08;
     transition:  0s ease-in;
 }
+
 @media screen and (max-width: 400px){
     .box-fnc [class*="fnc-"]{
         width: 40px;
@@ -308,6 +335,12 @@ canvas{
         line-height: 40px;
         font-size:5vw;
     }
+    .box-color span.active,
+    .box-color span:hover{ 
+    box-shadow: 0 0 8px 1px #f00,
+                inset 2px 2px 5px #0008,
+                inset -2px -2px 5px #fff8;
+    transform: translateY( 0px);}
 }
 
 </style>
