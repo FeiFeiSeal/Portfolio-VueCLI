@@ -13,9 +13,9 @@ export default {
             const canvasSize = ()=>{
                 const canvas = document.querySelector('#draw');
                 //設定canvas寬度為window寬度
-                canvas.width = window.innerWidth;
+                canvas.width = canvas.parentElement.offsetWidth;
                 //設定canvas高度為window高度
-                canvas.height = window.innerHeight;
+                canvas.height = canvas.parentElement.offsetHeight;
             }
 
             //開始畫圖(滑鼠)
@@ -121,14 +121,23 @@ export default {
                     img.onload = function(){
                         let width = 0;
                         let height = 0;
+                        //當圖片寬大於canvas寬時 => 圖片寬適應canvas寬
                         if(this.width > canvas.width){
                             width = (canvas.width/this.width)*this.width
                             height = (canvas.width/this.width)*this.height
+                            if( height < canvas.height ){
+                                let setY = (canvas.height - height - 70)/2;
+                                ctx.drawImage(this, 0, setY, width, height);
+                            }
                         }else{
                             width = this.width;
                             height = this.height;
+                            if( height < canvas.height ){
+                                let setX = ( canvas.width - width)/2;
+                                let setY = ( canvas.height - height - 70)/2;
+                                ctx.drawImage(this, setX, setY, width, height);
+                            }
                         }
-                        ctx.drawImage(this, 0, 0, width, height);
                     };
                 })
 
@@ -313,7 +322,6 @@ canvas{
     transform: translateX(-50%);
 }
 .box-fnc [class*="fnc-"]{
-    /* width: 50px; */
     height: 50px;
     padding: 0 15px;
     font-size: 20px;
@@ -340,18 +348,34 @@ canvas{
 }
 
 @media screen and (max-width: 400px){
+    .box-color span{
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+    }
     .box-fnc [class*="fnc-"]{
-        width: 40px;
         height: 40px;
         line-height: 40px;
         font-size:5vw;
     }
     .box-color span.active,
     .box-color span:hover{ 
-    box-shadow: 0 0 8px 1px #f00,
-                inset 2px 2px 5px #0008,
-                inset -2px -2px 5px #fff8;
-    transform: translateY( 0px);}
+        transform: translateY( 0px);
+    }
+    .box-color input[type="range"]{ height: 5px;}
+    .box-color input[type="range"]::-webkit-slider-thumb{
+        width:20px;
+        height:20px;
+    }
+    .box-color .brush-color{
+        display: block;
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+    .box-color .brush-size p{
+        position: relative;
+        top: 10px;
+    }
 }
 
 </style>
