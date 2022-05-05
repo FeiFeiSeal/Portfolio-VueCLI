@@ -1,7 +1,12 @@
 <script>
-import { onMounted, reactive, ref, watch } from '@vue/runtime-core'
+import { onMounted, reactive, ref } from '@vue/runtime-core'
 import { useRouter } from 'vue-router';
+import description from "@/components/description.vue"
+
 export default {
+    components:{
+      description,
+    },
     setup(){
             const isDrawing = ref(false); //控制只有在滑鼠按下時才運作
             const moveDate = reactive({ lastX: 0, lastY: 0,})
@@ -24,6 +29,10 @@ export default {
                     const ctx = canvas.getContext('2d');
                     
                     if(!isDrawing.value) return;
+                    if(colorNow.value === "rainbow"){
+                        ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`
+                        hslColor.value++;
+                    }  
                     //當兩條線交會時，繪製成圓角
                     ctx.lineJoin = 'round';
                     //繪製線條的末端為圓角
@@ -36,10 +45,7 @@ export default {
  
                     [moveDate.lastX, moveDate.lastY] = [e.offsetX, e.offsetY];
 
-                    if(colorNow.value === "rainbow"){
-                        ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`
-                        hslColor.value++;
-                    }   
+                     
             }
             //開始畫圖(觸控)
             const touchDraw=(e)=>{
@@ -47,6 +53,10 @@ export default {
                     const ctx = canvas.getContext('2d');
                     
                     if(!isDrawing.value) return;
+                    if(colorNow.value === "rainbow"){
+                        ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`
+                        hslColor.value++;
+                    }   
                     //當兩條線交會時，繪製成圓角
                     ctx.lineJoin = 'round';
                     //繪製線條的末端為圓角
@@ -59,10 +69,7 @@ export default {
 
                     [moveDate.lastX, moveDate.lastY] = [e.touches[0].clientX, e.touches[0].clientY];
 
-                    if(colorNow.value === "rainbow"){
-                        ctx.strokeStyle = `hsl(${hslColor.value}, 100%, 50%`
-                        hslColor.value++;
-                    }   
+                   
             }
             //結束畫圖狀態
             //要再保存畫圖的狀態
@@ -75,7 +82,6 @@ export default {
             }
             //開啟畫圖開關狀態
             const starDrawing = (e)=>{
-              const canvas = document.querySelector('#draw');
               isDrawing.value = true;
               //解決一開始從起始值 0,0 飆過來的問題=> 當滑鼠按下去的時候就要馬上更新起始值
               [moveDate.lastX, moveDate.lastY] = [e.offsetX, e.offsetY];
@@ -106,7 +112,7 @@ export default {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
             }
             //上傳圖片用canvas呈現
-            //用label去觸發input
+            //為了不使用input的預設外觀，用label去觸發input
             const upload =(e)=>{
                 const canvas = document.querySelector('#draw');
                 const ctx = canvas.getContext('2d');
@@ -215,6 +221,7 @@ export default {
         </div>
 
     </div>
+    <description/>
 </template>
 <style scoped>
 

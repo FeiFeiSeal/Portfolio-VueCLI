@@ -1,0 +1,314 @@
+[
+  {
+    "id": "layout-kingNews",
+    "name":"入口網頁-KingNews",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":"模組化物件、Flex排版、Grid排版、RWD"
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      }
+    ],
+    "info": [
+      { "txt":"HTML 語意上，考量到版面是屬於新聞類型，預覽狀況下每篇新聞資料量不多且彼此之間相關性較低，因此使用 <section> 包 <section>的方式讓語意更明確。",
+        "img":""
+      },
+      { "txt":"考慮到每篇新聞可能會有不同長度的標題跟內文，設定了行數限制,避免超多文字造成跑版",
+        "img":""
+      },
+      { "txt":"RWD 的部分進行了手機、平板、桌機三段式縮放，在不同裝置上呈現的效果不盡相同",
+        "img":""
+      },
+      { "txt":"IG、FB、Twitter 嵌入",
+        "img":""
+      },
+      { "txt":"768px以下，用 JS 添加class的方法，手刻風琴頁效果",
+        "img":"description/layout-kingNews/layout-kingNews01.jpg"
+      },
+      { "txt":"768px以下，header 置頂開關功能",
+        "img":""
+      },
+      { "txt":"月曆插件手刻更改外觀 (jsCalendar)",
+        "img":"description/layout-kingNews/layout-kingNews02.png"
+      }
+    ]
+  },
+  {
+    "id": "layout-MAIKON",
+    "name":"形象網頁-MAIKON",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":""
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      }
+    ],
+    "info": [
+      { "txt":"參考網頁 https://ld-wp73.template-help.com/monstroid2/skins/maikon/",
+        "img":""
+      },
+      { "txt":"透過 CSS 自定義屬性統一管理色彩 (搭配 rgba 使用可以調整透明度)",
+        "img":"description/layout-MAIKON/layout-MAIKON01.png"
+      },
+      { "txt":"不規則版面切版",
+        "img":"description/layout-MAIKON/layout-MAIKON02.png"
+      },
+      { "txt":"CSS 搭配 JS 捲動動畫與數字增加效果",
+        "img":"description/layout-MAIKON/layout-MAIKON03.gif"
+      },
+      { "txt":"",
+        "img":"description/layout-MAIKON/layout-MAIKON04.gif"
+      }
+    ]
+  },
+  {
+    "id": "layout-PLATE",
+    "name":"形象網頁-PLATE",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":"position、animation、transition"
+      }
+    ],
+    "info": [
+      { "txt":"參考網頁 https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/index.html",
+        "img":""
+      }
+      
+    ]
+  },
+  {
+    "id": "TodoList",
+    "name":"TodoList 待辦清單",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":"flex排版、自定義 checkbox 樣式、gradient 屬性產生背景花紋"
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      },
+      {
+        "skill":"Regular Expression",
+        "txt":"字符替換"
+      }
+    ],
+    "info": [
+      { "txt":"新增：除了可輸入中文、英文、數字，透過 RegExp 轉換特定字符後，亦可輸入原始碼(不會因使用innerHTML塞入文字導致產生新元素)。輸入完成之後可使用鍵盤 enter 鍵或新增按鈕來新增項目，讓使用更直覺、更自由。",
+        "img":""
+      },
+      { "txt":"刪除：將滑鼠游標移至欲刪除項目，點擊垃圾桶圖示即可刪除。",
+        "img":""
+      },
+      { "txt":"編輯：將滑鼠游標移至欲編輯項目，點擊 edit 即可開始編輯，編輯完成請按 OK 或是點擊其他區域皆可儲存編輯內容。",
+        "img":""
+      },
+      { "txt":"連續勾選：點選後按住 shift 鍵，可連續勾選項目。",
+        "img":"description/todolist/todolist01.gif"
+      }
+    ]
+  },
+  {
+    "id": "TainanCultureAPI",
+    "name":"台南市古蹟景點旅客人次查詢",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":""
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      },
+      {
+        "skill":"axios",
+        "txt":""
+      }
+    ],
+    "info": [
+      { 
+        "txt":"利用台南市政府提供的 JSON 資料，製作出快速查詢各大古蹟景點的小作品，可以同時呈現出不同年度、不同月份、不同景點的旅客人次對照",
+        "img":""
+      },
+      { 
+        "txt":"為了操作更直覺，選擇不使用 search 按鈕，讓使用者可以在選取到景點時就呈現資料。",
+        "img":""
+      },
+      { 
+        "txt":" 多次查詢可能會讓表單過於冗長，因次將查詢結果表單變成滾軸式，且會隨著查詢結果增加將視窗置底。",
+        "img":""
+      }
+    ]
+  },
+  {
+    "id": "Canvas",
+    "name":"Canvas 小畫板",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":""
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      },
+      {
+        "skill":"Vue",
+        "txt":""
+      }
+    ],
+    "info": [
+      { 
+        "txt":"可選擇多種顏色筆刷與彩色筆刷",
+        "img":""
+      },
+      { 
+        "txt":"筆刷大小調整：使用 v-model 綁定<input>獲得資料，進而自由調整筆刷大小",
+        "img":""
+      },
+      { 
+        "txt":"復原功能：透過 popstate 事件紀錄變動，再使用 Vue Router 返回前一步驟",
+        "img":""
+      },
+      { 
+        "txt":"清除功能",
+        "img":""
+      },
+      { 
+        "txt":"下載圖片：使用 HTML5 的 download 屬性",
+        "img":""
+      },
+      { 
+        "txt":"上傳圖片：透過<input>上傳圖片，用 canvas 呈現。上傳按鈕隱藏了<input>預設的樣式，改用<label>去觸發<input>，進而能自訂外觀",
+        "img":"description/canvas/canvas01.png"
+      },
+      { 
+        "txt":"可使用滑鼠與觸控進行繪圖",
+        "img":""
+      }
+    ]
+  },
+  {
+    "id": "DrumKit",
+    "name":"Drum Kit",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":"使用data-* attribute 來對應 keyCode"
+      },
+      {
+        "skill":"CSS3",
+        "txt":""
+      },
+      {
+        "skill":"JavaScript",
+        "txt":"addEventListener 監聽事件"
+      },
+      {
+        "skill":"Vue",
+        "txt":""
+      }
+    ],
+    "info": [
+      { 
+        "txt":"是 JS30 第一天的小練習，改用 Vue 來呈現，並改動了原本音效與樣式",
+        "img":""
+      },
+      { 
+        "txt":"利用輸入鍵盤的案件事件keydown觸發功能，利用keyCode取值，並將keyCode的值對應到data-key，接著使用 audio.play()放出音樂",
+        "img":""
+      }
+    ]
+  },
+  {
+    "id": "Clock",
+    "name":"Clock",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":""
+      },
+      {
+        "skill":"JavaScript",
+        "txt":"使用 new Date() 獲取時間"
+      },
+      {
+        "skill":"Vue",
+        "txt":""
+      }
+    ],
+    "info": [
+      { 
+        "txt":"是 JS30 第二天的小練習，改用 Vue 框架來製作，增加了時針隨著分針前進的效果以及呈現數字時間輔助觀看，外觀使用了 CSS 的 box-shadow、repeating-conic-gradient 進行了美化",
+        "img":""
+      },
+      { 
+        "txt":"外觀上使用了 CSS 的 box-shadow、repeating-conic-gradient、border-radius 與偽元素進行了美化，並透過變數設定 HSL 色彩，讓時鐘的顏色隨著秒針產生不同變化",
+        "img":""
+      }
+    ]
+  },
+  {
+    "id": "Variable",
+    "name":"Clock",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":""
+      },
+      {
+        "skill":"JavaScript",
+        "txt":"setProperty()"
+      },
+      {
+        "skill":"Vue",
+        "txt":"v-model"
+      }
+    ],
+    "info": [
+      { 
+        "txt":"是 JS30 第三天的小練習，改用 Vue 框架來實作，利用 v-model 綁定 input 獲取改變的數值，再將數值更新到 CSS 的變數值，並自行客製了拉桿的外觀",
+        "img":""
+      }
+    ]
+  }
+]

@@ -28,7 +28,7 @@ export default {
          <li>切版作品
             <ul class="list-second">
                 <li><router-link to="/layout-kingNews">入口網頁-KingNews-RWD</router-link></li>
-                <li><router-link to="/layout-MAIKON">形象網頁-MAIKONss-RWD</router-link></li>
+                <li><router-link to="/layout-MAIKON">形象網頁-MAIKON-RWD</router-link></li>
                 <li><router-link to="/layout-PLATE">形象網頁-PLATE</router-link></li>
             </ul>
          </li>

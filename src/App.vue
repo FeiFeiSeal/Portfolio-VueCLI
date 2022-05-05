@@ -1,6 +1,6 @@
 <script>
-import Nav from '@/components/Nav.vue'
-import NavBtn from '@/components/NavBtn.vue'
+import Nav from '@/components/Nav.vue';
+import NavBtn from '@/components/NavBtn.vue';
 import { ref } from '@vue/reactivity';
 
 export default ({
@@ -45,7 +45,10 @@ export default ({
   html, body{
     width: 100%;
     height: 100%;
+    font-family: "微軟正黑體";
+    font-size: 16px;
   }
+
   #app {
     width: 100%;
     height: 100%;
@@ -53,6 +56,7 @@ export default ({
     flex-wrap: wrap;
     background-color: #e6e9ee; 
     position: relative;
+    /* overflow-x: hidden; */ /*會導致srollY回傳都是0*/
   }
   .area-nav{
     width: 30%;
@@ -70,7 +74,8 @@ export default ({
     align-items: center;
     flex-grow: 1;
     width: 70%;
-    /* overflow: hidden; */
+    position: relative;
+    overflow-x: hidden;
   }
   @media screen and (max-width: 768px){
     .area-nav{

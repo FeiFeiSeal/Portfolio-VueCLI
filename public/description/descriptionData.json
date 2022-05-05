@@ -1,0 +1,74 @@
+[
+  {
+    "id": "TodoList",
+    "name":"TodoList 待辦清單",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":"flex排版、自定義 checkbox 樣式、gradient 屬性產生背景花紋"
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      },
+      {
+        "skill":"Regular Expression",
+        "txt":"字符替換"
+      }
+    ],
+    "info": [
+      { "txt":"新增：除了可輸入中文、英文、數字，透過 RegExp 轉換特定字元後，亦可輸入原始碼(不會因使用innerHTML塞入文字導致產生新元素)。輸入完成之後可使用鍵盤 enter 鍵或新增按鈕來新增項目，讓使用更直覺、更自由。",
+        "img":""
+      },
+      { "txt":"刪除：將滑鼠游標移至欲刪除項目，點擊垃圾桶圖示即可刪除。",
+        "img":""
+      },
+      { "txt":"編輯：將滑鼠游標移至欲編輯項目，點擊 edit 即可開始編輯，編輯完成請按 OK 或是點擊其他區域皆可儲存編輯內容。",
+        "img":""
+      },
+      { "txt":"連續勾選：點選後按住 shift 鍵，可連續勾選項目。",
+        "img":"../assets/logo.png"
+      }
+    ]
+  },
+  {
+    "id": "Canvas",
+    "name":"Canvas 小畫板",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":"flex排版、自定義 checkbox 樣式、gradient 屬性產生背景花紋"
+      },
+      {
+        "skill":"JavaScript",
+        "txt":""
+      },
+      {
+        "skill":"Regular Expression",
+        "txt":"字符替換"
+      }
+    ],
+    "info": [
+      { 
+        "txt":"Javascript30是一個線上的教學課程，利用三十天的時間每天實作一個簡單的JS作品並自身初學者的角度講解相關概念。",
+        "img":"https://i.imgur.com/VriIkDX.png"
+      },
+      { 
+        "txt":"Javascript30是一個線上的教學課程，利用三十天的時間每天實作一個簡單的JS作品並自身初學者的角度講解相關概念。",
+        "img":"https://picsum.photos/200/300"
+      },
+      { 
+        "txt":"Javascript30是一個線上的教學課程，利用三十天的時間每天實作一個簡單的JS作品並自身初學者的角度講解相關概念。",
+        "img":"https://picsum.photos/200/300"
+      }
+    ]
+  }
+]

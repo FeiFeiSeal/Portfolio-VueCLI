@@ -25,7 +25,7 @@ export default {
 </template>
 
 
-<style>
+<style scoped>
 /*按鈕動畫*/
     .btn-nav{
         width: 50px;

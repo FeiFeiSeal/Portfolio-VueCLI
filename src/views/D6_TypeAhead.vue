@@ -128,6 +128,7 @@ export default {
 <style scoped >
     .block-TypeAhead{
         width: 100%;
+        background-color: #e6e9ee; 
     }
     .search-form {
         width: 100%;
@@ -172,11 +173,11 @@ export default {
     }
 
     .suggestions >>> li:nth-child(even) {
-      transform: perspective(200px) rotateX(3deg) translateY(2px) scale(1.001);
+      transform: translateY(2px) scale(1.001);
       background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 200%);
     }
     .suggestions >>> li:nth-child(odd) {
-      transform: perspective(200px) rotateX(-3deg) translateY(3px);
+      transform: translateY(3px);
       background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
     }
 

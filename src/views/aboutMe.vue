@@ -1,24 +1,96 @@
 <script>
 import { ref } from '@vue/reactivity'
+import { onMounted } from '@vue/runtime-core';
 
 export default {
     setup(){
         const iconColor = ref("#4e392e");
-    
-        return { iconColor }
+        const checkSlide = (e)=>{
+            //希望未來不管增加幾個技能欄都能自動添加上去，因此使用了選取器而非直接用class固定住
+            const sliderLeft = document.querySelectorAll('.region-skill .box-skill:nth-child(3n+1)')
+            const sliderRight = document.querySelectorAll('.region-skill .box-skill:nth-child(3n)')
+            const sliderCenter = document.querySelectorAll('.region-skill .box-skill:nth-child(2n)')
+
+           sliderLeft.forEach((item)=>{
+                //啟動slide效果的位置(希望在畫面底端過圖片1/2的時候顯示)
+                const slideAt = (window.scrollY) + (window.innerHeight) - (item.offsetHeight)/2;
+                
+                //往回捲動也要有效果(希望在畫面頂端過圖片1/2的時候顯示)
+                const itemBottom = (item.offsetTop) + (item.offsetHeight)
+                
+                //往下捲動：當指定位置>物件與頁面頂端的距離時啟動
+                const isPass = slideAt > item.offsetTop;
+
+                //往上捲動：當物件的底端數值 > 視窗與網頁頂端捲動距離時啟動
+                const isNotPass = itemBottom > window.scrollY;
+
+                if(isPass && isNotPass){
+                    item.classList.add('slide');
+                }else{
+                    item.classList.remove('slide');
+                }
+            })
+            sliderRight.forEach((item)=>{
+                //啟動slide效果的位置(希望在畫面底端過圖片1/2的時候顯示)
+                const slideAt = (window.scrollY) + (window.innerHeight) - (item.offsetHeight)/2;
+                
+                //往回捲動也要有效果(希望在畫面頂端過圖片時顯示)
+                const itemBottom = (item.offsetTop) + (item.offsetHeight)
+                
+                //往下捲動：當指定位置>物件與頁面頂端的距離時啟動
+                const isPass = slideAt > item.offsetTop;
+
+                //往上捲動：當物件的底端數值 > 視窗與網頁頂端捲動距離時啟動
+                const isNotPass = itemBottom > window.scrollY;
+
+                if(isPass && isNotPass){
+                    item.classList.add('slide');
+                }else{
+                    item.classList.remove('slide');
+                }
+            })
+            sliderCenter.forEach((item)=>{
+                //啟動slide效果的位置(希望在畫面底端過圖片1/2的時候顯示)
+                const slideAt = (window.scrollY) + (window.innerHeight) - (item.offsetHeight)/2;
+                
+                //往回捲動也要有效果(希望在畫面頂端過圖片1/2的時候顯示)
+                const itemBottom = (item.offsetTop) + (item.offsetHeight)
+                
+                //往下捲動：當指定位置>物件與頁面頂端的距離時啟動
+                const isPass = slideAt > item.offsetTop;
+
+                //往上捲動：當物件的底端數值 > 視窗與網頁頂端捲動距離時啟動
+                const isNotPass = itemBottom > window.scrollY;
+
+                if(isPass && isNotPass){
+                    item.classList.add('slide');
+                }else{
+                    item.classList.remove('slide');
+                }
+            })
+
+        }
+        onMounted(()=>{
+            
+           //vue 要監聽scroll要加一個true，變成捕獲事件
+            window.addEventListener('scroll', checkSlide, true);
+            
+
+        })
+        return { iconColor,  checkSlide}
     }
 
 }
 </script>
 <template>
     <div class="block-about">
-        <section class="section-person">
+        <section class="section-person" >
             <div class="container">
                 <div class="region-photo">
                     <div class="box-photo">
                         <img src="../assets/person-photo.png" alt="person-photo">
                     </div>
-                    <h1>Pearlie Kuo</h1>
+                    <h1>郭珮語</h1>
                     <p>Front-End 前端工程師</p>
                 </div>
                 <div class="region-info">
@@ -127,6 +199,7 @@ export default {
                             <li>理解 CSS 命名的邏輯與應用</li>
                             <li>熟悉 Flex / Grid 使用</li>
                             <li>熟悉 CSS 選取器的應用</li>
+                            <li>理解 SCSS 預處理器</li>
                             <li>CSS Animation 製作</li>
                             <li>獨立手刻 RWD 響應式網站</li>
                             <li>具 Bootstrap5 使用經驗</li>
@@ -142,7 +215,7 @@ export default {
                         <ul>
                             <li>熟悉 ES6 語法</li>
                             <li>使用 axios 非同步處理</li>
-                            <li>理解 Even Flow</li>
+                            <li>理解 Event Flow</li>
                             <li>理解 prototypal inheritance 與 Prototype Chain  </li>
                             <li>Regular expression 撰寫</li>
                             <li>Vue CLI 專案建置</li>
@@ -156,13 +229,13 @@ export default {
                                 </h3>
                             </div>
                             <ul>
+                                <li>Git 基本操作</li>
                                 <li>Photoshop - 繪製與照片合成</li>
                                 <li>illustrator - 設計與繪製</li>
                                 <li>Balsamiq - wireframe規劃</li>
                                 <li>Markdown 語法</li>
                                 <li>WordPress - Elementor Website Builder</li>
                                 <li>獨立閱讀技術文件</li>
-                                <li>撰寫技術文件</li>
                             </ul>
                      </div>
                  </div>
@@ -195,6 +268,7 @@ export default {
     font-size: 16px;
     line-height: 1.5;
     background-color: #e6e9ee; 
+    
 }
 .block-about a{
  color: var(--icon-color);
@@ -204,23 +278,18 @@ export default {
     margin: auto;
     padding: var(--gap);
     background-color: #fff8;
-    position: relative;
 }
 [class*="section-"]:not(:last-child) .container::after{
     content: "";
+    display: block;
     width: 10px;
     height: 10px;
+    margin: var(--gap) auto 0;
     border-radius: 50%;
-    text-align: center;
     background-color: #aaa;
     box-shadow: 
         -20px 0 0 #ccc,
         20px 0 0 #ccc;
-    position: absolute;
-    bottom: calc(var(--gap)/-2);
-    left: 0;
-    right: 0;
-    margin: auto;
     animation: divAni 2s infinite;
 }
 @keyframes divAni{
@@ -251,6 +320,9 @@ export default {
 }
  /*section-person-------------*/
 /*---------------------------*/
+.section-person .container{
+    background-color: #fffc;
+}
 .section-person .region-photo{
     text-align: center;
     margin-bottom: var(--gap);
@@ -370,7 +442,17 @@ export default {
     border-radius: 25px;
     box-shadow: 0 0 5px #0001;
     background-color: #fffc;
+    transition: .4s ease-in;
+
 }
+.region-skill .box-skill:nth-child(3n+1){ opacity: 0; transform: translateX(-50%) scale(0.95);}
+.region-skill .box-skill:nth-child(3n){   opacity: 0; transform: translateX(50%) scale(0.95);}
+.region-skill .box-skill:nth-child(2n){   opacity: 0; transform: scale(0.8);}
+
+.region-skill .box-skill:nth-child(3n+1).slide{ opacity: 1; transform: translateX(0) scale(1);}
+.region-skill .box-skill:nth-child(3n).slide{   opacity: 1; transform: translateX(0) scale(1);}
+.region-skill .box-skill:nth-child(2n).slide{   opacity: 1; transform:  scale(1);}
+
 .region-skill .skill-name{
     padding: 5px 0;
     margin-bottom: 10px;
@@ -405,13 +487,14 @@ export default {
     /*--------------------min1200*/
     .section-person .container{
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         column-gap: var(--gap);
         padding-top: 60px;
     }
-    .section-person .region-photo{ width: 35%;}
-    .section-person .region-info { width: 65%;}
-   .section-person .region-photo h1{
+    .section-person .region-photo{ width: calc(35% - var(--gap)/2);}
+    .section-person .region-info { width: calc(65% - var(--gap)/2);}
+    .section-person .region-photo h1{
        font-size: 30px;
    }
      /*section-experience---------*/

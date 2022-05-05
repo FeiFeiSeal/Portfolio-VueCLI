@@ -1,6 +1,11 @@
 <script>
 import { onMounted } from '@vue/runtime-core';
+import description from "@/components/description.vue"
+
 export default {
+  components:{
+    description,
+  },
   setup(){
     //鍵盤播放+增加播放效果
     function BoardPlaySound(e){
@@ -90,6 +95,7 @@ export default {
     <!-- GET http://localhost:8080/assets/sound/pianoA.mp3 404 (Not Found) -->
     <!-- <audio src="..\assets\sound\pianoA.mp3"></audio> -->
   </div>
+  <description/>
 </template>
 
 <style scoped>

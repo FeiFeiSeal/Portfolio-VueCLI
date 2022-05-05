@@ -1,6 +1,11 @@
 <script>
 import { onMounted, onUnmounted, ref } from '@vue/runtime-core';
+import description from "@/components/description.vue"
+
 export default{
+    components:{
+        description,
+    },
     setup(){
         const show = ref("00:00:00");
         let timer = null;
@@ -22,6 +27,8 @@ export default{
             document.querySelector('.sec').style.transform = `rotate(${secDeg}deg)`
 
             show.value = showTimer(getHr, getMin, getSec);
+
+            changeColor(secDeg);
         }
 
         function showTimer(Hr, Min, Sec){
@@ -31,7 +38,10 @@ export default{
 
             return `${newHr}:${newMin}:${newSec}`
         }
-
+        //顏色變化
+        function changeColor(num){
+            document.querySelector('.clock').style.setProperty(`--changeColor`, num)
+        }
         //針對只有個位的數字添加前置0
         function addZero(num){
             let arr = num.toString().split('');
@@ -65,6 +75,7 @@ export default{
           {{show}}
       </div>
   </div> 
+  <description/>
 </template>
 
 <style scoped>
@@ -78,13 +89,14 @@ export default{
         flex-direction: column;
     }
     .clock{
+        --changeColor: 0;
         width: 50%;
         padding-bottom: 50%;
         margin-bottom: 150px;
         border-radius: 50%;
         background-color: #fffd;
         box-shadow: 
-              0px 0px  3px 50px #f1f6ffcc,
+              0px 0px  3px 50px hsla( var(--changeColor), 60%, 70%, 20%),
              -3px 5px 10px -5px #00d3,
              50px 0px 60px 30px #0003,
             -30px 0px 20px 30px #fff8 ;

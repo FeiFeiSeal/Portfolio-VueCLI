@@ -1,10 +1,15 @@
 <script>
-export default {
+import description from "@/components/description.vue"
 
+export default {
+  components:{
+        description,
+  },
 }
 </script>
 <template>
-    <iframe iframe src="https://feifeiseal.github.io/practice/20211128-KingNew-RWD/home.html" frameborder="0"></iframe>
+  <iframe iframe src="https://feifeiseal.github.io/practice/20211128-KingNew-RWD/home.html" frameborder="0"></iframe>
+  <description/>
 </template>
 <style>
   iframe{

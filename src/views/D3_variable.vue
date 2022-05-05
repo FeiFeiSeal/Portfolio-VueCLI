@@ -1,6 +1,11 @@
 <script>
 import { onMounted, reactive, ref, watch } from '@vue/runtime-core'
+import description from "@/components/description.vue"
+
 export default {
+    components:{
+        description,
+    },
     setup(){
         function dataUpdate(){
             // console.log(this);
@@ -16,7 +21,8 @@ export default {
             document.querySelectorAll('.box-scroll input').forEach((el)=>{
                 el.addEventListener('input', function(){
                     const suffix = this.dataset.suffix;
-                    document.documentElement.style.setProperty(`--${this.id}`,`${this.value}${suffix}`)
+                    // document.documentElement.style.setProperty(`--${this.id}`,`${this.value}${suffix}`)
+                    document.querySelector('.block-variable').style.setProperty(`--${this.id}`,`${this.value}${suffix}`)
                 })
             })
             
@@ -43,28 +49,32 @@ export default {
             </label>
         </div>
     </div>
+    <description/>
 </template>
 
 <style scpoed>
 :root{
+    /* --bgc: #ffffff;
+    --spacing: 10px;
+    --blur: 10px; */
+}
+.block-variable{
     --bgc: #ffffff;
     --spacing: 10px;
     --blur: 10px;
-}
-.block-variable{
     width: 100%;
     max-width: 1200px;
     margin: auto;
 }
 .box-title{
     margin-bottom: 50px;
-    font-family: '微軟正黑體', serif;
+    font-size: 32px;
+    font-weight: 700;
     text-align: center;
 }
 .box-title span{  
     color: var(--bgc);
 }
-
 .box-show{
     width: 40%;
     padding: var(--spacing);
