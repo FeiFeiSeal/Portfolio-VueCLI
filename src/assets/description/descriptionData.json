@@ -248,6 +248,10 @@
       { 
         "txt":"利用輸入鍵盤的案件事件keydown觸發功能，利用keyCode取值，並將keyCode的值對應到data-key，接著使用 audio.play()放出音樂",
         "img":""
+      },
+      { 
+        "txt":"新增錄音功能，利用 setInterval 紀錄音階與時間、setTimeout 播放紀錄的旋律",
+        "img":""
       }
     ]
   },

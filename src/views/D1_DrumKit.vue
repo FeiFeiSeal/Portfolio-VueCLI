@@ -1,5 +1,5 @@
 <script>
-import { onMounted } from '@vue/runtime-core';
+import { onMounted, reactive, ref } from '@vue/runtime-core';
 import description from "@/components/description.vue"
 
 export default {
@@ -7,6 +7,12 @@ export default {
     description,
   },
   setup(){
+    let recordTimer = null; //秒數計時器
+    let i = 0; //計時
+    let recordSec = ref((10));
+    let melody = reactive([]);
+    let btnState = ref(false);     //按鈕狀態
+
     //鍵盤播放+增加播放效果
     function BoardPlaySound(e){
       const audio = document.querySelector(`audio[data-key= "${e.keyCode}"]`);
@@ -35,6 +41,77 @@ export default {
         this.classList.remove("playing");
     }
 
+    
+    //錄製
+    function record(){
+      console.log("錄音開始");
+      recordSec.value = 10;
+      melody = [];
+      btnState.value = true;
+      timeGo();
+              
+    }
+    
+    function timeGo(){
+      const plays = document.querySelectorAll('.block-keyboard li');
+      plays.forEach((el) => {
+              //滑鼠點擊
+              el.addEventListener('click', mouseScale);
+      })
+      //鍵盤按鍵
+      window.addEventListener('keydown', scale); 
+
+      recordTimer = setInterval(()=>{
+        i+=100;
+        recordSec.value-=0.1;
+        if(recordSec.value <= 0){
+            window.removeEventListener('keydown', scale);
+            clearInterval(recordTimer);
+        }
+      },100)
+    }
+    //
+    function mouseScale(e){          
+          melody.push({keyCode:`${e.target.dataset.key}`, sec:`${i}`});
+    }
+    //鍵盤紀錄旋律
+    function scale(e){
+          const audio = document.querySelector(`audio[data-key= "${e.keyCode}"]`);
+          if( !audio ) return; 
+          melody.push({keyCode:`${e.keyCode}`, sec:`${i}`});
+    }
+    
+    //清除錄音
+    function recordClear(){
+      recordSec.value = 10;
+      melody = [];
+      i=0;
+      clearInterval(recordTimer);
+      btnState.value = false;
+    }
+
+    //播放錄音
+    function playRecord(e){
+      window.removeEventListener('keydown', scale);
+      clearInterval(recordTimer);
+      e.target.disabled = true;
+
+      melody.forEach((el)=>{
+        const audio = document.querySelector(`audio[data-key= "${el.keyCode}"]`);
+        const playAni = document.querySelector(`.block-keyboard li[data-key= "${el.keyCode}"]`);
+
+        setTimeout(()=>{
+          audio.currentTime = 0;
+          audio.play();
+          playAni.classList.add("playing");
+        }, el.sec)
+      })
+
+      setTimeout(()=>{
+        e.target.disabled = false;
+      }, 10*1000)
+    }
+  
     //Vue 需要等 template 掛好之後才找的到DOM元素
     onMounted(()=>{
       const plays = document.querySelectorAll('.block-keyboard li');
@@ -51,6 +128,8 @@ export default {
         el.addEventListener('transitionend', removePlayAni);
       })
     })
+    
+    return { record, recordSec, recordClear, btnState, playRecord }
   }
 }
 </script>
@@ -67,6 +146,14 @@ export default {
       <li data-key="74"><p>J<span>Si</span></p></li>
       <li data-key="75"><p>K<span>Do</span></p></li>
     </ul>
+    <div class="box-control">
+      <button @click="record" :disabled="btnState">錄音</button>
+      <button @click="recordClear" :disabled="!btnState">清除</button>
+      <button @click="playRecord" :disabled="!btnState">播放</button>
+      <p>{{recordSec.toFixed(0)}}</p>
+    </div>
+
+
 
     <audio data-key="65">
       <source src="..\assets\sound\pianoC.mp3" type="audio/mp3">
@@ -196,5 +283,21 @@ export default {
       color: #f92659;
       transform: scale(1.2);
   }
+  .box-control{
+    display: block;
+    padding: 100px 0;
+    text-align: center;
+  }
+  .box-control button{
+    padding: 5px 15px;
+    margin-right: 10px;
+  }
+  .box-control p{
+    display: block;
+    padding: 30px 0;
+    color: #222;
+    font-size: 28px;
+    font-weight: 700;
 
+  }
 </style>
