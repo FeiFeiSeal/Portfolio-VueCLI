@@ -90,8 +90,8 @@ export default{
     }
     .clock{
         --changeColor: 0;
-        width: 50%;
-        padding-bottom: 50%;
+        width: 40%;
+        padding-bottom: 40%;
         margin-bottom: 150px;
         border-radius: 50%;
         background-color: #fffd;
