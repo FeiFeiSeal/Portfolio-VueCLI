@@ -50,7 +50,7 @@
       },
       {
         "skill":"CSS3",
-        "txt":""
+        "txt":"Flex排版、RWD"
       },
       {
         "skill":"JavaScript",
@@ -90,6 +90,33 @@
     ],
     "info": [
       { "txt":"參考網頁 https://livedemo00.template-help.com/wt_62267_v8/prod-20823-one-service/index.html",
+        "img":""
+      }
+      
+    ]
+  },
+  {
+    "id": "layout-sweetaste",
+    "name":"形象網頁-sweetaste",
+    "tags": [ 
+      {
+        "skill":"HTML5",
+        "txt":""
+      },
+      {
+        "skill":"CSS3",
+        "txt":"Flex排版、RWD、animation、aspect-ratio"
+      },
+      {
+        "skill":"Bootstrap5",
+        "txt":"navbar component 使用"
+      }
+    ],
+    "info": [
+      { "txt":"六角學院公益體驗營切版任務之一",
+        "img":""
+      },
+      { "txt":"為了避免圖片載入時間過久，導致閱讀時圖片忽然載入完成造成跑版，使用了 aspect-ratio 先將圖片容器固定住",
         "img":""
       }
       

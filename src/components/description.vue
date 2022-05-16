@@ -116,7 +116,7 @@ export default {
     .block-description article{
         width: 100%;
         height: 100%;
-        padding: 50px 30px;
+        padding: 50px 5%;
         border-radius: 10px;
         background-color: #fff;
         box-shadow: 0 0 10px 5px #0003 ;
@@ -190,6 +190,8 @@ export default {
     }
     .block-description section li p{
         margin-bottom: 5px;
+        font-size: 16px;
+        line-height: 2;
     }
     .block-description section li img{
         display: inline-block;
@@ -207,7 +209,7 @@ export default {
         font-size: 24px;
         text-align: center;
         line-height: 60px;
-        background-color: #126e82;
+        background-color: #126e82cc;
         box-shadow: 0 10px 10px -10px #0006;
         user-select: none;
         position: absolute;

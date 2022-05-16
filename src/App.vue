@@ -93,7 +93,7 @@ export default ({
     .area-nav .navCtrl{
       display: inline-block;
       position: absolute;
-      top: 30px;
+      top: 100px;
       right: -60px;
       z-index: 12;
     }

@@ -59,6 +59,11 @@ const routes = [
     component: () => import('../views/layout/PLATE.vue')
   },
   {
+    path: '/layout-sweetaste',
+    name: 'sweetaste',
+    component: () => import('../views/layout/sweetaste.vue')
+  },
+  {
     path: '/Other',
     name: 'Other',
     component: () => import('../views/other.vue')
