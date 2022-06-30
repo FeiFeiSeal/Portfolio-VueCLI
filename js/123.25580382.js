@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkPortfolio_VueCLI"]=self["webpackChunkPortfolio_VueCLI"]||[]).push([[123],{780:function(n,e,t){t.r(e),t.d(e,{default:function(){return f}});var o=t(252);function r(n,e,t,r,u,c){const s=(0,o.up)("description");return(0,o.wg)(),(0,o.j4)(s)}var u=t(46),c={components:{description:u.Z},setup(){}},s=t(744);const i=(0,s.Z)(c,[["render",r]]);var f=i}}]);
+//# sourceMappingURL=123.25580382.js.map
